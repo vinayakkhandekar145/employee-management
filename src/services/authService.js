@@ -1,6 +1,7 @@
 
 const API_URL = 'https://employee-management-b535.onrender.com';
 
+
 export async function loginUser(email, password) {
   const response = await fetch(
     `${API_URL}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
