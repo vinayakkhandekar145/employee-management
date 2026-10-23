@@ -94,3 +94,200 @@
   color: #b45309;
   background: #fff2dc;
 }
+
+/* Employee table card */
+.employee-table-card {
+  width: 100%;
+  min-width: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Responsive table wrapper */
+.employee-table-card .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table layout */
+.employee-table-card table {
+  width: 100%;
+  min-width: 850px;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.employee-table-card thead th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 16px;
+  white-space: nowrap;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.employee-table-card tbody td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f3f5;
+  white-space: nowrap;
+}
+
+.employee-table-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.employee-table-card tbody tr:hover {
+  background-color: #f8faff;
+}
+
+/* Employee name and email */
+.employee-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.employee-name > div:last-child {
+  min-width: 0;
+}
+
+.employee-name .fw-semibold {
+  color: #212529;
+  overflow-wrap: anywhere;
+}
+
+.employee-name small {
+  display: block;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* Employee avatar */
+.employee-avatar {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  background-color: #e7efff;
+  color: #0d6efd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Employee status */
+.employee-status {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-active {
+  background-color: #d1e7dd;
+  color: #146c43;
+}
+
+.status-inactive {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+/* Action buttons */
+.employee-table-card .employee-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.employee-table-card .employee-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 6px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  border-radius: 6px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .employee-table-card {
+    border-radius: 10px;
+  }
+
+  .employee-table-card table {
+    min-width: 800px;
+  }
+
+  .employee-table-card thead th,
+  .employee-table-card tbody td {
+    padding: 12px;
+  }
+
+  .employee-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 15px;
+  }
+
+  .employee-name {
+    gap: 9px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .employee-table-card table {
+    min-width: 760px;
+  }
+
+  .employee-table-card thead th,
+  .employee-table-card tbody td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .employee-name {
+    min-width: 190px;
+  }
+
+  .employee-name small {
+    font-size: 11px;
+  }
+
+  .employee-avatar {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    font-size: 14px;
+  }
+
+  .employee-table-card .employee-actions {
+    gap: 6px;
+  }
+
+  .employee-table-card .employee-actions .btn {
+    padding: 5px 7px;
+    font-size: 11px;
+  }
+
+  .employee-status {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}

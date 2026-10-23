@@ -126,19 +126,23 @@ function Employee() {
                     </span>
                   </td>
                   <td>
-                    <button
-                      className="btn btn-sm btn-outline-primary me-2"
-                      onClick={() => navigate(`/employee/edit/${employee.id}`)}
-                    >
-                      <i className="bi bi-pencil"></i> Edit
-                    </button>
+                    <div className="employee-actions">
+                      <button
+                        className="btn btn-sm btn-outline-primary"
+                        onClick={() =>
+                          navigate(`/employee/edit/${employee.id}`)
+                        }
+                      >
+                        <i className="bi bi-pencil"></i> Edit
+                      </button>
 
-                    <button
-                      className="btn btn-sm btn-outline-danger"
-                      onClick={() => handleDelete(employee.id)}
-                    >
-                      <i className="bi bi-trash"></i> Delete
-                    </button>
+                      <button
+                        className="btn btn-sm btn-outline-danger"
+                        onClick={() => handleDelete(employee.id)}
+                      >
+                        <i className="bi bi-trash"></i> Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
