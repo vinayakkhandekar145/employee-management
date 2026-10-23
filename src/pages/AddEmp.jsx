@@ -1,11 +1,14 @@
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { createEmployee } from "../services/authService";
-
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  getEmployeeById,
+  updateEmployee,
+} from "../services/authService"
 function AddEmp() {
   const navigate = useNavigate();
-
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,7 +19,27 @@ function AddEmp() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+  async function loadEmployee() {
+       try {
+         const employee = await getEmployeeById(id);
+         setFormData({
+           name: employee.name || "",
+           email: employee.email || "",
+           department: employee.department || "",
+           role: employee.role || "",
+           status: employee.status || "Active",
+         });
+       } catch (err) {
+         setError(err.message);
+       } finally {
+         setLoading(false);
+       }
+     }
+    useEffect(() => {
+     if (id) {
+     loadEmployee();
+    }
+     }, [id]);
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -48,6 +71,20 @@ function AddEmp() {
       setLoading(false);
     }
   }
+    async function handleEdit(e) {
+      e.preventDefault();
+      setError("");
+  
+      try {
+        setLoading(true);
+        await updateEmployee(id, formData);
+        navigate("/employee");
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
 
   return (
     <div className="container-fluid">
@@ -70,7 +107,7 @@ function AddEmp() {
       <div className="card border-0 shadow-sm p-4">
         {error && <div className="alert alert-danger">{error}</div>}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={id ? handleEdit :handleSubmit}>
           <div className="row g-3">
             <div className="col-md-6">
               <label className="form-label">Full Name *</label>

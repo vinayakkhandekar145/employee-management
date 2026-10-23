@@ -6,7 +6,6 @@ import Dashboard from "./pages/DashBoard";
 import DashboardHome from "./pages/DashboardHome";
 import Employee from "./pages/Employee";
 import AddEmp from "./pages/AddEmp";
-import EditEmp from "./pages/EditEmp";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -65,7 +64,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardHome />} />
         <Route path="/employee" element={<Employee />} />
         <Route path="/employee/add" element={<AddEmp />} />
-        <Route path="/employee/edit/:id" element={<EditEmp />} />
+        <Route path="/employee/edit/:id" element={<AddEmp />} />
       </Route>
 
       {/* Unknown routes */}
