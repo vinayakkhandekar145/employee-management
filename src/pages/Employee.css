@@ -1,0 +1,96 @@
+
+.employees-page h2 {
+  color: #25324b;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.employee-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  min-width: 220px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 1px solid #e8edf5;
+  border-radius: 12px;
+}
+
+.employee-summary > i {
+  font-size: 28px;
+  color: #3267ed;
+  background: #edf2ff;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.employee-summary span {
+  color: #778198;
+  font-size: 13px;
+}
+
+.employee-summary h3 {
+  margin: 5px 0 0;
+  color: #25324b;
+  font-weight: 700;
+}
+
+.employee-table-card {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.employee-table-card thead th {
+  background: #f8faff;
+  color: #778198;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 17px 20px;
+}
+
+.employee-table-card tbody td {
+  padding: 17px 20px;
+  color: #475467;
+  font-size: 14px;
+}
+
+.employee-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 210px;
+}
+
+.employee-avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #3267ed;
+  background: #edf2ff;
+  font-weight: 700;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.employee-status {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-active {
+  color: #16834a;
+  background: #e7f8ee;
+}
+
+.status-inactive {
+  color: #b45309;
+  background: #fff2dc;
+}

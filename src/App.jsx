@@ -1,0 +1,68 @@
+
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
+
+import Login from "./pages/Login";
+import Dashboard from "./pages/DashBoard";
+import DashboardHome from "./pages/DashboardHome";
+import Employee from "./pages/Employee";
+import AddEmp from "./pages/AddEmp";
+import EditEmp from "./pages/EditEmp";
+
+function App() {
+  const [user, setUser] = useState(
+    () => JSON.parse(localStorage.getItem("user")) || null
+  );
+
+  function handleLogin(userData) {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  }
+
+  function handleLogout() {
+    setUser(null);
+    localStorage.removeItem("user");
+  }
+
+  return (
+    <Routes>
+      <Route
+        path="/login"
+        element={
+          user ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Login onLogin={handleLogin} />
+          )
+        }
+      />
+
+      <Route
+        element={
+          user ? (
+            <Dashboard user={user} onLogout={handleLogout} />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      >
+        <Route path="/dashboard" element={<DashboardHome />} />
+        <Route path="/employee" element={<Employee />} />
+        <Route path="/employee/add" element={<AddEmp />} />
+        <Route path="/employee/edit/:id" element={<EditEmp />} />
+      </Route>
+
+      <Route
+        path="*"
+        element={
+          <Navigate
+            to={user ? "/dashboard" : "/login"}
+            replace
+          />
+        }
+      />
+    </Routes>
+  );
+}
+
+export default App;
