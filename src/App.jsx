@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -10,9 +9,13 @@ import AddEmp from "./pages/AddEmp";
 import EditEmp from "./pages/EditEmp";
 
 function App() {
-  const [user, setUser] = useState(
-    () => JSON.parse(localStorage.getItem("user")) || null
-  );
+  const [user, setUser] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("user")) || null;
+    } catch {
+      return null;
+    }
+  });
 
   function handleLogin(userData) {
     setUser(userData);
@@ -26,6 +29,18 @@ function App() {
 
   return (
     <Routes>
+      {/* Default route */}
+      <Route
+        path="/"
+        element={
+          <Navigate
+            to={user ? "/dashboard" : "/login"}
+            replace
+          />
+        }
+      />
+
+      {/* Login */}
       <Route
         path="/login"
         element={
@@ -37,6 +52,7 @@ function App() {
         }
       />
 
+      {/* Protected routes */}
       <Route
         element={
           user ? (
@@ -52,6 +68,7 @@ function App() {
         <Route path="/employee/edit/:id" element={<EditEmp />} />
       </Route>
 
+      {/* Unknown routes */}
       <Route
         path="*"
         element={
