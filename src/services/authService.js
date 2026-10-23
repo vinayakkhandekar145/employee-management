@@ -1,5 +1,5 @@
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://employee-management-b535.onrender.com';
 
 export async function loginUser(email, password) {
   const response = await fetch(
