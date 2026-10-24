@@ -6,6 +6,7 @@ import Employee from "./pages/Employee";
 import AddEmp from "./pages/AddEmp";
 import { AuthProvider, useAuth } from "./pages/context/AuthContext";
 import HelpSupport from "./pages/HelpSupport";
+import MyProfile from "./pages/MyProfile";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -37,6 +38,7 @@ function AppRoutes() {
         <Route path="/employee/add" element={<AddEmp />} />
         <Route path="/employee/edit/:id" element={<AddEmp />} />
         <Route path="/help" element={<HelpSupport/>}/>
+        <Route path="/profile" element={<MyProfile/>}/>
       </Route>
       <Route
         path="*"

@@ -15,13 +15,17 @@ function Sidebar() {
           <i className="bi bi-grid"></i>
           <span>Dashboard</span>
         </NavLink>
+         <NavLink to="/profile" className="sidebar-link">
+         <i className="bi bi-person-circle"></i>
+         <span>My Profile</span>
+        </NavLink>
 
         <NavLink to="/employee" className="sidebar-link">
           <i className="bi bi-people"></i>
           <span>Employee</span>
         </NavLink>
         <NavLink to="/help" className="sidebar-link">
-          <i className="bi  bi-headset me-2"></i>
+          <i className="bi  bi-headset"></i>
           <span>Help & Support</span>
         </NavLink>
       </div>
