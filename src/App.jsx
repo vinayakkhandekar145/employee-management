@@ -1,61 +1,32 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
-
 import Login from "./pages/Login";
 import Dashboard from "./pages/DashBoard";
 import DashboardHome from "./pages/DashboardHome";
 import Employee from "./pages/Employee";
 import AddEmp from "./pages/AddEmp";
+import { AuthProvider, useAuth } from "./pages/context/AuthContext";
+import HelpSupport from "./pages/HelpSupport";
 
-function App() {
-  const [user, setUser] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("user")) || null;
-    } catch {
-      return null;
-    }
-  });
-
-  function handleLogin(userData) {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-  }
-
-  function handleLogout() {
-    setUser(null);
-    localStorage.removeItem("user");
-  }
+function AppRoutes() {
+  const { user } = useAuth();
 
   return (
     <Routes>
-      {/* Default route */}
-      <Route
-        path="/"
-        element={
-          <Navigate
-            to={user ? "/dashboard" : "/login"}
-            replace
-          />
-        }
-      />
-
-      {/* Login */}
       <Route
         path="/login"
         element={
           user ? (
             <Navigate to="/dashboard" replace />
           ) : (
-            <Login onLogin={handleLogin} />
+            <Login  />
           )
         }
       />
 
-      {/* Protected routes */}
       <Route
         element={
           user ? (
-            <Dashboard user={user} onLogout={handleLogout} />
+            <Dashboard />
           ) : (
             <Navigate to="/login" replace />
           )
@@ -65,9 +36,8 @@ function App() {
         <Route path="/employee" element={<Employee />} />
         <Route path="/employee/add" element={<AddEmp />} />
         <Route path="/employee/edit/:id" element={<AddEmp />} />
+        <Route path="/help" element={<HelpSupport/>}/>
       </Route>
-
-      {/* Unknown routes */}
       <Route
         path="*"
         element={
@@ -81,4 +51,11 @@ function App() {
   );
 }
 
-export default App;
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
+  );
+}

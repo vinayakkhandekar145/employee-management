@@ -1,8 +1,10 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import './Layout.css'
+import { useAuth } from "./context/AuthContext";
 
-function Dashboard({ user, onLogout }) {
+function Dashboard() {
+  const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -10,7 +12,7 @@ function Dashboard({ user, onLogout }) {
     location.pathname === "/employee" ? "Employee" : "Dashboard";
 
   function handleLogout() {
-    onLogout();
+    logout();
     navigate("/login");
   }
 

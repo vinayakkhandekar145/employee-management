@@ -20,6 +20,10 @@ function Sidebar() {
           <i className="bi bi-people"></i>
           <span>Employee</span>
         </NavLink>
+        <NavLink to="/help" className="sidebar-link">
+          <i className="bi  bi-headset me-2"></i>
+          <span>Help & Support</span>
+        </NavLink>
       </div>
 
       <div className="sidebar-bottom">

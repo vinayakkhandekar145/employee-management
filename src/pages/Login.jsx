@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { loginUser } from "../services/authService";
 import "./Login.css";
+import { useAuth } from "./context/AuthContext";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
+  const {login} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,7 +23,7 @@ const Login = ({ onLogin }) => {
     try {
       setLoading(true);
       const user = await loginUser(email, password);
-      onLogin(user);
+      login(user);
     } catch (err) {
       setError(err.message || "Something went wrong");
     } finally {
